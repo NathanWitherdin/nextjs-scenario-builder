@@ -1,3 +1,8 @@
+![Node](https://img.shields.io/badge/node-18.x-blue)
+![Next.js](https://img.shields.io/badge/next.js-13.x-black)
+![Docker](https://img.shields.io/badge/docker-yes-blue)
+
+
 # Next.js Scenario Builder
 
 A full-stack Next.js (App Router) web application featuring interactive scenario pages and a dynamic Tabs Generator tool.
