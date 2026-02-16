@@ -1,0 +1,196 @@
+/* ===== Reset ===== */
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ===== Theme tokens ===== */
+:root {
+  --bg: #ffffff;
+  --fg: #111111;
+  --card: #f5f5f7;
+  --muted: #d9d9de;
+}
+[data-theme="dark"] {
+  --bg: #0f1012;
+  --fg: #e8e8ea;
+  --card: #16181b;
+  --muted: #2a2d32;
+}
+
+/* ===== Sticky footer layout ===== */
+html,
+body {
+  height: 100%;
+} /* allow full-height flex */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+#main {
+  flex: 1;
+} /* pushes footer to bottom */
+
+/* ===== Base styles ===== */
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  line-height: 1.5;
+  background: var(--bg);
+  color: var(--fg);
+  color-scheme: light dark;
+}
+h1 {
+  font-size: 1.5rem;
+  line-height: 1.25;
+  margin: 0 0 12px;
+  font-weight: 700;
+}
+h2 {
+  font-size: 1.125rem;
+  margin: 0 0 8px;
+  font-weight: 650;
+}
+h3 {
+  font-size: 1rem;
+  margin: 0 0 6px;
+  font-weight: 600;
+}
+p {
+  margin: 0 0 10px;
+}
+strong {
+  font-weight: 650;
+}
+#main {
+  padding-block: 24px;
+}
+a {
+  color: inherit;
+  text-underline-offset: 3px;
+}
+
+/* ===== Form elements ===== */
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: var(--fg);
+  background: var(--card);
+  border: 1px solid var(--muted);
+  border-radius: 10px;
+  padding: 8px 12px;
+}
+input,
+textarea {
+  background: var(--bg);
+  border-radius: 8px;
+}
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+/* Button states */
+button {
+  cursor: pointer;
+  transition: filter 0.12s ease, transform 0.05s ease;
+}
+button:hover {
+  filter: brightness(1.03);
+}
+button:active {
+  transform: translateY(1px);
+}
+button[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ===== Layout helpers ===== */
+section {
+  background: var(--card);
+  border: 1px solid var(--muted);
+  border-radius: 12px;
+  padding: 16px;
+}
+code,
+pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Courier New", monospace;
+}
+pre {
+  overflow: auto;
+}
+hr {
+  border: 0;
+  border-top: 1px solid var(--muted);
+}
+svg {
+  fill: none;
+  stroke: currentColor;
+}
+svg [fill] {
+  fill: currentColor;
+}
+svg [stroke] {
+  stroke: currentColor;
+}
+
+/* ===== Header & Nav ===== */
+header {
+  backdrop-filter: saturate(120%) blur(2px);
+}
+nav[aria-label="Breadcrumb"] {
+  background: var(--bg);
+}
+
+/* Desktop nav */
+@media (min-width: 768px) {
+  #menu-button {
+    display: none;
+  }
+  #primary-navigation {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 8px !important;
+    padding: 0 !important;
+  }
+}
+
+/* ===== Footer ===== */
+footer {
+  background: var(--bg);
+}
+
+/* ===== Skip link ===== */
+a[href="#main"] {
+  position: absolute;
+  left: -9999px;
+  top: 8px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: var(--card);
+  border: 1px solid var(--muted);
+}
+a[href="#main"]:focus {
+  left: 8px;
+}

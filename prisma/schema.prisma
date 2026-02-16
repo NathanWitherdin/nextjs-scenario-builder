@@ -1,0 +1,44 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Scenario {
+  id             String    @id @default(cuid())
+  timerMinutes   Int
+  backgroundUrl  String
+  punishmentText String
+  rules          Json
+  messages       Message[]
+
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+}
+
+
+model Message {
+  id            String   @id @default(cuid())
+  scenarioId    String
+  scenario      Scenario @relation(fields: [scenarioId], references: [id])
+  category      String
+  severity      String?
+  text          String
+  answer        String?
+  order         Int
+
+  // --- new per-critical outcome fields ---
+  punishment    String?   // punishment shown in court
+  reason        String?   // law broken / explanation
+  canReturn     Boolean?  // can the player return after court
+  courtBgUrl    String?   // optional background override
+
+  // --- optional full JSON backup for generator parity ---
+  courtOutcome  Json?
+
+  @@index([scenarioId])
+}
+
