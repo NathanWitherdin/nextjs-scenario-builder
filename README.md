@@ -1,164 +1,206 @@
-# CSE2CWA Assessment 1 – Next.js Web App
+# Next.js Scenario Builder
 
-**Name:** Nathan Witherdin
-**Student Number:** 20960713
+A full-stack Next.js (App Router) web application featuring interactive scenario pages and a dynamic Tabs Generator tool.
 
----
-
-## 📖 Overview
-
-This project is my submission for **CSE2CWA Assessment 1**.
-It is a **Next.js (App Router)** web application that demonstrates all required features:
-
-- Multi-page app (Home, About, Escape Room, Coding Races, Court Room)
-- Student number displayed top-left on every page (Header)
-- Responsive navigation with **hamburger menu** (mobile) and horizontal nav (desktop)
-- **Breadcrumbs** under the header
-- **Light/Dark theme toggle** with persistence (localStorage)
-- **Footer** with copyright, name, student number, and today’s date
-- **Accessibility**: skip link, ARIA roles, focus outlines
-- **Memory**: remembers last visited page (cookie + localStorage) and last active tab (localStorage)
-- **Tabs generator** on Home page with persistence + reset + copy/download
-- **Toast notifications** when saving tabs, copying, downloading, or resetting
-- **About page** with my name, student number, and an **embedded walkthrough video**
+This project demonstrates modern React architecture, state persistence, accessibility best practices, automated testing, Docker containerisation, and backend API integration.
 
 ---
 
-## 🗂 Project Structure
+## Overview
 
-```
-app/
- ├─ components/
- │   ├─ Breadcrumbs.tsx
- │   ├─ Footer.tsx
- │   ├─ Header.tsx
- │   ├─ NavMemory.tsx
- │   ├─ Tabs.tsx
- │   └─ ThemeToggle.tsx
- │
- ├─ about/page.tsx
- ├─ coding-races/page.tsx
- ├─ court-room/page.tsx
- ├─ escape-room/page.tsx
- ├─ globals.css
- ├─ layout.tsx
- └─ page.tsx            # Home (tabs generator)
+The application provides multiple interactive pages and scenario-based experiences, including:
 
-public/
- └─ walkthrough.mp4     # walkthrough video (included in submission)
-```
+* Escape Room scenario
+* Coding Races scenario
+* Court Room scenario
+* Tabs Generator tool
+* About page
+
+The project focuses on modular architecture, user experience, persistent state management, and clean separation of concerns.
 
 ---
 
-## 🚀 Getting Started
+## Core Features
 
-### Prerequisites
+### Multi-Page Architecture
 
-- Node.js (LTS recommended)
-- npm
+* Built using Next.js App Router
+* Shared layout structure
+* Responsive navigation
+* Breadcrumb navigation system
 
-### Run Locally
+### Theme System
 
-```bash
-npm install
-npm run dev
-```
+* Light/Dark mode toggle
+* Theme persistence via local storage
+* System-aware theme handling
 
-Then open [http://localhost:3000](http://localhost:3000) in your browser.
+### Scenario Pages
 
-No environment variables are required.
+* Interactive story-based pages
+* Conditional logic
+* User-driven progression
+* State-aware UI elements
 
----
+### Tabs Generator Tool
 
-## ✨ Features
+* Create dynamic tabbed content
+* Edit existing tabs
+* Reset tab state
+* Persist tabs to storage
+* Export standalone HTML
+* Copy-to-clipboard functionality
 
-### Navigation & Layout
+### State Persistence
 
-- Student number **20960713** shown top-left in the header on all pages.
-- **Hamburger menu** appears on small screens; horizontal nav on desktop.
-- **Breadcrumbs** reflect the current route.
-- **Footer** shows © YEAR, name, student number, and today’s date.
-
-### Theme
-
-- **Light/Dark theme** via CSS variables (`--bg`, `--fg`, `--card`, `--muted`).
-- Preference is saved in **localStorage** and restored on load.
+* Remembers last visited page
+* Remembers active tab selection
+* Stores user preferences locally
 
 ### Accessibility
 
-- **Skip to content** link for keyboard users.
-- Semantic landmarks and **ARIA roles** (tabs, nav, footer, tablist, tabpanel).
-- Clear focus outlines for keyboard navigation.
+* Skip-to-content link
+* Keyboard navigation support
+* Semantic HTML structure
+* ARIA roles and landmarks
+* Focus management
 
-### Memory
+### API Integration
 
-- **Last visited page** remembered via cookie + localStorage.
-- **Last active tab** remembered via localStorage.
+* Server-side API routes
+* CRUD-style interactions
+* Backend logic separation
 
-### Tabs Generator (Home)
+### Testing
 
-- Add/remove tabs, edit titles and content.
-- Tabs are **saved in localStorage** and restored on refresh.
-- **Reset button** to return to default 3-tab setup.
-- Generates standalone **HTML + JS** with **inline CSS only**.
-- Output can be copied or downloaded as `Hello.html` and opened in any browser.
-- **Toast notifications** confirm save, reset, copy, and download actions.
+* Playwright automated testing
+* Functional and navigation testing
 
-### About Page
+### Containerisation
 
-- Displays **Name** and **Student Number**.
-- Embeds a **walkthrough video** (`walkthrough.mp4`) demonstrating features.
-
----
-
-## 🧪 Testing Guide (for Marker)
-
-1. Open the app at [http://localhost:3000](http://localhost:3000).
-2. Confirm pages: Home, About, Escape Room, Coding Races, Court Room.
-3. Verify **student number** shows top-left in header.
-4. Resize window: **hamburger menu** appears on mobile, horizontal nav on desktop.
-5. Toggle **Light/Dark theme** → all text and components update correctly.
-6. Use **Tab key** → skip link visible and focus outlines appear.
-7. Navigate to another page, refresh → app restores **last visited page**.
-8. On Home, select a tab, refresh → app restores **last active tab**.
-9. On Home, add/remove/edit tabs, refresh → state is preserved.
-10. Press **Reset** → tabs return to original 3-tab setup.
-11. Check **toast messages** when saving, copying, downloading, or resetting.
-12. On Home, generate HTML, copy/download, save as `Hello.html` → works standalone.
-13. On About page, play the **embedded video**.
+* Dockerfile included
+* Production-ready container build
+* Local container execution support
 
 ---
 
-## 📦 Submission Contents
+## Tech Stack
 
-- Project source code (this folder)
-- `README.md` (this file)
-- `walkthrough.mp4` (video file, embedded + standalone)
-- Screenshots of GitHub commits (as required by the brief)
-
-⚠️ `node_modules/` and `.next/` were removed before zipping.
-
----
-
-## 🤖 AI Usage Acknowledgement
-
-Some code, styling, and documentation were developed with assistance from **ChatGPT (OpenAI)** in accordance with assessment guidelines.
-All code and text were reviewed and tested before inclusion.
+* Next.js (App Router)
+* React
+* TypeScript
+* Playwright
+* Prisma (database schema & migrations)
+* Docker
+* Node.js
 
 ---
 
-## 🛠 Technical Notes
+## Project Structure
 
-- **Framework:** Next.js (App Router)
-- **Styling:** global CSS with theme tokens (`--bg`, `--fg`, `--card`, `--muted`)
-- **Output HTML:** uses **inline CSS only** (per requirements)
-- **Persistence:** cookies + localStorage
-- **Toast system:** lightweight React state + timeout (no external libraries)
-- **Formatting:** Prettier (`npx prettier --write .`) used to enforce consistent code style
+```
+app/            → Pages, layouts, API routes
+components/     → Reusable UI components
+lib/            → Shared utilities and logic
+prisma/         → Database schema and migrations
+tests/          → Playwright test suite
+public/         → Static assets
+Dockerfile      → Container configuration
+```
 
 ---
 
-## 📜 License
+## Running Locally
 
-This project was created solely for academic purposes as part of **CSE2CWA Assessment 1 (La Trobe University)**.
-It is not intended for production use.
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start development server:
+
+```bash
+npm run dev
+```
+
+Open:
+
+```
+http://localhost:3000
+```
+
+---
+
+## Running with Docker
+
+Build the container:
+
+```bash
+docker build -t nextjs-scenario-builder .
+```
+
+Run the container:
+
+```bash
+docker run -p 3000:3000 nextjs-scenario-builder
+```
+
+Access via:
+
+```
+http://localhost:3000
+```
+
+---
+
+## Running Tests
+
+Execute Playwright tests:
+
+```bash
+npx playwright test
+```
+
+---
+
+## What This Project Demonstrates
+
+* Modern React application structure
+* Next.js App Router implementation
+* Client/server component separation
+* Persistent UI state management
+* Accessible web design
+* API route integration
+* Containerised deployment workflow
+* Automated browser testing
+
+---
+
+## Potential Improvements
+
+* Authentication system
+* Role-based access control
+* Database-backed persistence for tabs
+* CI/CD integration
+* Cloud deployment automation
+* Expanded scenario content
+* Enhanced analytics logging
+
+---
+
+## Portfolio Context
+
+This repository is shared as a portfolio project to demonstrate:
+
+* Full-stack development capability
+* Clean project architecture
+* Production-aware practices
+* Testing and containerisation
+* Modern frontend engineering patterns
+
+Environment-specific secrets and deployment credentials are not included.
+
+
+
+Your GitHub is now looking serious.
